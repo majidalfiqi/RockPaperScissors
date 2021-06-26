@@ -7,12 +7,38 @@
 
     <title>Rock Paper Scissors</title>
 
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/d7af1762f1.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <h1 id="message"></h1>
-
-    <script src="js/main.js"></script>
+    <main id="index-main">
+      <h1 class="title index-title">Rock Paper Scissors</h1>
+      <a href="./game.html" class="btn">Play Now</a>
+      <section class="cards index-cards">
+        <div class="card rock">
+          <span class="icon far fa-hand-rock"></span>
+        </div>
+        <div class="card paper">
+          <span class="icon far fa-hand-paper"></span>
+        </div>
+        <div class="card scissors">
+          <span class="icon far fa-hand-scissors"></span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        by Mano
+        <a href="http://github.com/majidalfiqi" target="_blank" rel="noopener noreferrer" class="git"
+          ><span class="icon fab fa-github"></span
+        ></a>
+      </p>
+    </footer>
   </body>
 </html>

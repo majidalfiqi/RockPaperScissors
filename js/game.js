@@ -83,3 +83,4 @@ function game() {
 
 msg = document.getElementById("message");
 // game();
+//window.location.replace("http://www.w3schools.com");
