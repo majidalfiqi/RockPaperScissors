@@ -185,6 +185,6 @@ function game(plyrChoice, comChoice) {
     roundNumber.textContent = round;
   } else {
     plyr > com ? (gameResult = "won") : (gameResult = "lost");
-    window.location.replace(window.location.origin + "/result.html?" + gameResult);
+    window.location.replace(location.href.replace(location.pathname, "/result.html?" + gameResult));
   }
 }
