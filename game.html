@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rock Paper Scissors</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet" />
+
+    <script src="https://kit.fontawesome.com/d7af1762f1.js" crossorigin="anonymous"></script>
+    <script src="./js/game.js" defer></script>
+  </head>
+
+  <body>
+    <div id="game-container">
+      <aside>
+        <p id="score">Score</p>
+        <div id="com">
+          <p>COM</p>
+          <p id="com-score"></p>
+        </div>
+        <div id="round">
+          <p>Round</p>
+          <p id="round-number"></p>
+        </div>
+        <div id="player">
+          <p>Player</p>
+          <p id="player-score"></p>
+        </div>
+      </aside>
+      <main id="game-main">
+        <h1 class="title game-title">Rock Paper Scissors</h1>
+        <section class="cards game-cards com-cards">
+          <div class="card rock com-rock">
+            <span class="icon far fa-hand-rock"></span>
+          </div>
+          <div class="card paper com-paper">
+            <span class="icon far fa-hand-paper"></span>
+          </div>
+          <div class="card scissors com-scissors">
+            <span class="icon far fa-hand-scissors"></span>
+          </div>
+        </section>
+        <h1 class="title prompt">Click on your choice</h1>
+        <h1 class="title round-tie hidden">
+          Its a tie!
+          <span class="tie"> X</span>
+        </h1>
+        <h1 class="title round-result hidden">
+          You
+          <span class="result"></span>
+          the round!
+        </h1>
+        <p class="round-details trans">
+          <span class="win-choice"></span>
+          beats
+          <span class="lose-choice"></span>
+        </p>
+        <section class="cards game-cards player-cards">
+          <div class="card rock plyr-rock">
+            <span class="icon far fa-hand-rock"></span>
+          </div>
+          <div class="card paper plyr-paper">
+            <span class="icon far fa-hand-paper"></span>
+          </div>
+          <div class="card scissors plyr-scissors">
+            <span class="icon far fa-hand-scissors"></span>
+          </div>
+        </section>
+        <footer class="footer game-footer">
+          <p>
+            by Mano
+            <a
+              href="https://github.com/majidalfiqi/RockPaperScissors"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="git"
+              ><span class="icon fab fa-github"></span
+            ></a>
+          </p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

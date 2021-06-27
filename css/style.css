@@ -1,0 +1,252 @@
+:root {
+  --clr-primary: #204196;
+  --clr-bg: #d1d8eb;
+  --clr-win: #37a80a;
+  --clr-lose: #fc2864;
+  --shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  font-family: "Comfortaa", cursive;
+  font-size: 20pt;
+  text-align: center;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-primary);
+}
+
+#index-main,
+#game-main,
+#result-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100vw;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 50px;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.btn {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: var(--clr-primary);
+  color: #fff;
+  padding: 20px 40px;
+  margin: 50px;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.card {
+  font-size: 5rem;
+  color: #fff;
+  background-color: var(--clr-primary);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 3%;
+  width: 20%;
+  max-width: 200px;
+  height: 20vw;
+  max-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.paper {
+  background-color: var(--clr-win);
+}
+
+.scissors {
+  background-color: var(--clr-lose);
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  position: relative;
+  color: var(--clr-primary);
+}
+
+.footer a::after {
+  content: "GitHub";
+  position: absolute;
+  top: 2px;
+  left: 30px;
+  transform-origin: left;
+  transition: opacity 0.2s ease-in;
+  opacity: 0;
+}
+
+.footer a:hover::after {
+  opacity: 1;
+}
+
+/* game.html specific */
+
+#game-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+aside {
+  background-color: var(--clr-primary);
+  color: #fff;
+  width: 30vw;
+  max-width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+aside > div > p:last-child {
+  margin: 30px 0;
+}
+
+#score,
+#round {
+  font-weight: bold;
+}
+
+#game-main {
+  min-width: 70vw;
+  height: 100vh;
+}
+
+.game-title {
+  margin: 10px;
+}
+
+.game-cards {
+  width: 80%;
+  max-width: 900px;
+  margin: 10px;
+}
+
+.game-cards .card {
+  width: 20%;
+  max-width: 150px;
+  height: 15vw;
+  max-height: 150px;
+}
+
+.com-cards .card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.player-cards .card {
+  cursor: pointer;
+}
+
+.round-result,
+.round-tie,
+.prompt {
+  margin: 20px;
+  font-size: 1.5rem;
+}
+
+.result {
+  color: var(--clr-win);
+  text-transform: uppercase;
+}
+
+.tie {
+  color: var(--clr-lose);
+}
+
+.round-details {
+  margin: 10px;
+  font-size: 0.7rem;
+}
+
+.win-choice,
+.lose-choice {
+  /* color: var(--clr-lose); */
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.game-footer {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* result.html specific */
+
+#result-main .game-result {
+  margin: 20px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* js runtime clases */
+
+.faded {
+  opacity: 0.2;
+}
+
+.trans {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.lost {
+  color: var(--clr-lose);
+}
+
+.won {
+  color: var(--clr-win);
+}
+
+/* media queries   */
+
+/* index min 765 */
+/* game min 1119 */

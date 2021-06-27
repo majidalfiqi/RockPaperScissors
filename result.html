@@ -15,13 +15,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/d7af1762f1.js" crossorigin="anonymous"></script>
+    <script src="./js/result.js" defer></script>
   </head>
 
   <body>
-    <main id="index-main">
-      <h1 class="title index-title">Rock Paper Scissors</h1>
-      <a href="./game.html" class="btn">Play Now</a>
-      <section class="cards index-cards">
+    <main id="result-main">
+      <h1 class="title result-title">Rock Paper Scissors</h1>
+      <h1 class="title game-result">
+        You
+        <span class="result"></span>
+        the game!
+      </h1>
+      <a href="./game.html" class="btn">Play Again?</a>
+      <section class="cards result-cards">
         <div class="card rock">
           <span class="icon far fa-hand-rock"></span>
         </div>
@@ -33,7 +39,7 @@
         </div>
       </section>
     </main>
-    <footer class="footer index-footer">
+    <footer class="footer result-footer">
       <p>
         by Mano
         <a href="https://github.com/majidalfiqi/RockPaperScissors" target="_blank" rel="noopener noreferrer" class="git"
