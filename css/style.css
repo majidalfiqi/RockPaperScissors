@@ -248,5 +248,36 @@ aside > div > p:last-child {
 
 /* media queries   */
 
-/* index min 765 */
-/* game min 1119 */
+@media (max-width: 1000px) {
+  :root {
+    font-size: 18pt;
+  }
+
+  .cards {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    font-size: 15pt;
+  }
+  .cards {
+    width: 60%;
+  }
+  .card {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    font-size: 12pt;
+  }
+  .cards {
+    width: 50%;
+  }
+  .card {
+    font-size: 3rem;
+  }
+}
