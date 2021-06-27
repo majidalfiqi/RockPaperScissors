@@ -15,7 +15,8 @@ body {
 }
 
 #index-main,
-#game-main {
+#game-main,
+#result-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +29,8 @@ body {
   font-weight: bold;
   font-size: 2rem;
   margin: 50px;
-  text-shadow: var(--shadow);
+  width: 80%;
+  max-width: 1000px;
 }
 
 .btn {
@@ -50,9 +52,11 @@ body {
 
 .cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 50px;
+  width: 90%;
+  max-width: 1000px;
 }
 
 .card {
@@ -61,10 +65,14 @@ body {
   background-color: var(--clr-primary);
   border-radius: 10px;
   padding: 30px;
-  margin: 30px;
-  width: 200px;
-  height: 200px;
-  line-height: 200px;
+  margin: 3%;
+  width: 20%;
+  max-width: 200px;
+  height: 20vw;
+  max-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
 }
 
@@ -81,7 +89,7 @@ body {
   background-color: var(--clr-lose);
 }
 
-footer {
+.footer {
   position: fixed;
   left: 0;
   right: 0;
@@ -92,12 +100,12 @@ footer {
   align-items: center;
 }
 
-footer a {
+.footer a {
   position: relative;
   color: var(--clr-primary);
 }
 
-footer a::after {
+.footer a::after {
   content: "GitHub";
   position: absolute;
   top: 2px;
@@ -107,7 +115,7 @@ footer a::after {
   opacity: 0;
 }
 
-footer a:hover::after {
+.footer a:hover::after {
   opacity: 1;
 }
 
@@ -130,6 +138,7 @@ aside {
   justify-content: space-evenly;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  box-shadow: var(--shadow);
 }
 
 aside > div > p:last-child {
@@ -143,6 +152,7 @@ aside > div > p:last-child {
 
 #game-main {
   min-width: 70vw;
+  height: 100vh;
 }
 
 .game-title {
@@ -150,5 +160,78 @@ aside > div > p:last-child {
 }
 
 .game-cards {
+  width: 80%;
+  max-width: 900px;
   margin: 10px;
 }
+
+.game-cards .card {
+  width: 20%;
+  max-width: 150px;
+  height: 15vw;
+  max-height: 150px;
+}
+
+.com-cards .card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.player-cards .card {
+  cursor: pointer;
+}
+
+.round-result,
+.prompt {
+  margin: 20px;
+  font-size: 1.5rem;
+}
+
+.result {
+  color: var(--clr-win);
+}
+
+.round-details {
+  margin: 10px;
+}
+
+.win-choice,
+.lose-choice {
+  color: var(--clr-lose);
+}
+
+.game-footer {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* result.html specific */
+
+#result-main .game-result {
+  margin: 20px;
+  font-size: 1.5rem;
+}
+
+/* js runtime clases */
+
+.faded {
+  opacity: 0.2;
+}
+
+.trans {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.tie {
+  color: var(--clr-lose);
+}
+
+/* media queries   */
+
+/* index min 765 */
+/* game min 1119 */
