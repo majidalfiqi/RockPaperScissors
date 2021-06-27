@@ -1,14 +1,13 @@
 // query selectors
+cards = document.querySelector(".player-cards");
+
 plyrRock = document.querySelector(".plyr-rock");
 plyrPaper = document.querySelector(".plyr-paper");
 plyrScissors = document.querySelector(".plyr-scissors");
 
-comRock = document.querySelector(".com-rock");
-comPaper = document.querySelector(".com-paper");
-comScissors = document.querySelector(".com-scissors");
-
 prompt = document.querySelector(".prompt");
 
+roundTie = document.querySelector(".round-tie");
 roundResult = document.querySelector(".round-result");
 result = document.querySelector(".result");
 
@@ -37,28 +36,57 @@ let resultText = "";
 let win = "";
 let lose = "";
 
+let gameResult;
+
 // event listeners
 plyrRock.addEventListener("click", () => {
+  let opt = ["rock", "paper", "scissors"];
   plyrChoice = "rock";
+  opt.splice(opt.indexOf(plyrChoice), 1);
+  opt.forEach((noChoose) => {
+    let item = document.querySelector(".plyr-" + noChoose);
+    item.classList.add("faded");
+    setTimeout(() => item.classList.remove("faded"), 1500);
+  });
   comChoice = comPlay();
   game(plyrChoice, comChoice);
 });
 plyrPaper.addEventListener("click", () => {
+  let opt = ["rock", "paper", "scissors"];
   plyrChoice = "paper";
+  opt.splice(opt.indexOf(plyrChoice), 1);
+  opt.forEach((noChoose) => {
+    let item = document.querySelector(".plyr-" + noChoose);
+    item.classList.add("faded");
+    setTimeout(() => item.classList.remove("faded"), 1500);
+  });
   comChoice = comPlay();
   game(plyrChoice, comChoice);
 });
 plyrScissors.addEventListener("click", () => {
+  let opt = ["rock", "paper", "scissors"];
   plyrChoice = "scissors";
+  opt.splice(opt.indexOf(plyrChoice), 1);
+  opt.forEach((noChoose) => {
+    let item = document.querySelector(".plyr-" + noChoose);
+    item.classList.add("faded");
+    setTimeout(() => item.classList.remove("faded"), 1500);
+  });
   comChoice = comPlay();
   game(plyrChoice, comChoice);
 });
 
 // logic
 function comPlay() {
-  let sel = ["rock", "paper", "scissors"];
+  let opt = ["rock", "paper", "scissors"];
   let i = Math.floor(Math.random() * 3);
-  return sel[i];
+  let sel = opt.splice(i, 1);
+  opt.forEach((noChoose) => {
+    let item = document.querySelector(".com-" + noChoose);
+    item.classList.add("faded");
+    setTimeout(() => item.classList.remove("faded"), 1500);
+  });
+  return sel[0];
 }
 
 function playRound(plyrChoice, comChoice) {
@@ -69,13 +97,13 @@ function playRound(plyrChoice, comChoice) {
   let result;
   switch (comChoice) {
     case "rock":
-      plyrChoice === "paper" ? (result = "WON") : (result = "LOST");
+      plyrChoice === "paper" ? (result = "won") : (result = "lost");
       break;
     case "paper":
-      plyrChoice === "scissors" ? (result = "WON") : (result = "LOST");
+      plyrChoice === "scissors" ? (result = "won") : (result = "lost");
       break;
     case "scissors":
-      plyrChoice === "rock" ? (result = "WON") : (result = "LOST");
+      plyrChoice === "rock" ? (result = "won") : (result = "lost");
       break;
     default:
       return "error";
@@ -84,33 +112,79 @@ function playRound(plyrChoice, comChoice) {
   return result;
 }
 
+function printMsg(rslt) {
+  switch (rslt) {
+    case "tie":
+      prompt.classList.add("hidden");
+      roundTie.classList.remove("hidden");
+      cards.style.pointerEvents = "none";
+      setTimeout(() => {
+        cards.style.pointerEvents = "auto";
+        prompt.classList.remove("hidden");
+        roundTie.classList.add("hidden");
+      }, 1500);
+      break;
+    case "won":
+      result.textContent = rslt;
+      result.classList.add("won");
+      prompt.classList.add("hidden");
+      roundResult.classList.remove("hidden");
+      winChoice.innerText = plyrChoice;
+      winChoice.style.color = getComputedStyle(document.querySelector(".plyr-" + plyrChoice)).backgroundColor;
+      loseChoice.innerText = comChoice;
+      loseChoice.style.color = getComputedStyle(document.querySelector(".com-" + comChoice)).backgroundColor;
+      roundDetails.classList.remove("trans");
+      cards.style.pointerEvents = "none";
+      setTimeout(() => {
+        result.classList.remove("won");
+        prompt.classList.remove("hidden");
+        roundResult.classList.add("hidden");
+        roundDetails.classList.add("trans");
+        cards.style.pointerEvents = "auto";
+      }, 1500);
+      break;
+    case "lost":
+      result.textContent = rslt;
+      result.classList.add("lost");
+      prompt.classList.add("hidden");
+      roundResult.classList.remove("hidden");
+      winChoice.innerText = comChoice;
+      winChoice.style.color = getComputedStyle(document.querySelector(".com-" + comChoice)).backgroundColor;
+      loseChoice.innerText = plyrChoice;
+      loseChoice.style.color = getComputedStyle(document.querySelector(".plyr-" + plyrChoice)).backgroundColor;
+      roundDetails.classList.remove("trans");
+      cards.style.pointerEvents = "none";
+      setTimeout(() => {
+        result.classList.remove("won");
+        prompt.classList.remove("hidden");
+        roundResult.classList.add("hidden");
+        roundDetails.classList.add("trans");
+        cards.style.pointerEvents = "auto";
+      }, 1500);
+      break;
+  }
+}
+
 function game(plyrChoice, comChoice) {
   resultText = playRound(plyrChoice, comChoice);
   switch (resultText) {
     case "tie":
-      roundResult.textContent = "It's a tie!";
-      result.textContent = " X";
-      result.classList.add("tie");
-      roundResult.appendChild(result);
-      prompt.classList.toggle("hidden");
-      roundResult.classList.toggle("hidden");
       break;
-    case "WON":
+    case "won":
       plyr++;
       plyrScore.textContent = plyr;
       break;
-    case "LOST":
+    case "lost":
       com++;
       comScore.textContent = com;
       break;
   }
-  if (round < 5) {
+  printMsg(resultText, plyrChoice, comChoice);
+  if (plyr < 5 && com < 5) {
     round++;
     roundNumber.textContent = round;
   } else {
-    // move to result.html with the result
+    plyr > com ? (gameResult = "won") : (gameResult = "lost");
+    window.location.replace("http://127.0.0.1:5500/result.html?" + gameResult);
   }
 }
-
-// game();
-//window.location.replace("http://www.w3schools.com");
